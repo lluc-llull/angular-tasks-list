@@ -1,0 +1,11 @@
+.content {
+  display: flex;
+}
+
+.side-menu {
+  flex: 0 0 150px;
+}
+
+.information {
+  flex: 1;
+}
