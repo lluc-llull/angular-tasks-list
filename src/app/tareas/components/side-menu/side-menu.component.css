@@ -1,3 +1,10 @@
 a{
   text-decoration: none;
+  color: black;
+}
+
+.navItem{
+  margin-top: 19px;
+  font-size: 34px;
+  margin-left: 20px;
 }

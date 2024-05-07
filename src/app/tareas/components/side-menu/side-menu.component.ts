@@ -11,7 +11,8 @@ import { RouterModule } from '@angular/router';
 })
 export class SideMenuComponent {
   public menuItems = routes
-  .map(route => route.children ?? [] )
-  .flat()
-  .filter(route => route && route.path);
+    .map(route => route.children ?? [] )
+    .flat()
+    .filter(route => route && route.path)
+    .filter(route => !route.path?.includes(':'));
 }
