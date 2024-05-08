@@ -18,7 +18,7 @@ export class TasksService {
     this.tasksSubject.next(this.tasks);
   }
 
-  getTasks(): Task[] {
+  getTasks() {
     return this.tasks;
   }
 

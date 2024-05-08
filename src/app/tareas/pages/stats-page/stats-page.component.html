@@ -1,1 +1,111 @@
-<p>stats-page works!</p>
+<h2>Stats</h2>
+
+<div class="stats">
+  <div class="all">
+    <h3>Tareas Totales - {{tasksList.length}}</h3>
+
+    <table id="tasks">
+      <thead>
+        <tr class="head">
+
+          <th (click)="sortData('id')">ID
+            @if(sortColumn === 'id'){
+              <span>{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+            }
+          </th>
+          <th (click)="sortData('title')">Title
+            @if (sortColumn === 'title') {
+              <span>{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+            }
+          </th>
+          <th (click)="sortData('completed')">Status
+            @if(sortColumn === 'completed') {
+              <span>{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+            }
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of tasksList; track $index) {
+          <tr class="items">
+              <td>{{item.id}}</td>
+              <td>{{item.title}}</td>
+              <td>{{item.completed | statusPipe}}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  <hr>
+  <div class="all">
+    <h3>Tareas Completadas - {{tasksListCompleted.length}}</h3>
+
+    <table id="tasks">
+      <thead>
+        <tr class="head">
+
+          <th (click)="sortData('id')">ID
+            @if(sortColumn === 'id'){
+              <span>{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+            }
+          </th>
+          <th (click)="sortData('title')">Title
+            @if (sortColumn === 'title') {
+              <span>{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+            }
+          </th>
+          <th (click)="sortData('completed')">Status
+            @if(sortColumn === 'completed') {
+              <span>{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+            }
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of tasksListCompleted; track $index) {
+          <tr class="items">
+              <td>{{item.id}}</td>
+              <td>{{item.title}}</td>
+              <td>{{item.completed | statusPipe}}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  <hr>
+  <div class="all">
+    <h3>Tareas Pendientes - {{tasksListPending.length}}</h3>
+
+    <table id="tasks">
+      <thead>
+        <tr class="head">
+
+          <th (click)="sortData('id')">ID
+            @if(sortColumn === 'id'){
+              <span>{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+            }
+          </th>
+          <th (click)="sortData('title')">Title
+            @if (sortColumn === 'title') {
+              <span>{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+            }
+          </th>
+          <th (click)="sortData('completed')">Status
+            @if(sortColumn === 'completed') {
+              <span>{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+            }
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of tasksListPending; track $index) {
+          <tr class="items">
+              <td>{{item.id}}</td>
+              <td>{{item.title}}</td>
+              <td>{{item.completed | statusPipe}}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

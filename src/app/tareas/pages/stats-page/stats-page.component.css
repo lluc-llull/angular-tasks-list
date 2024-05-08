@@ -1,0 +1,35 @@
+h2{
+  font-size: 27px;
+}
+
+.stats{
+  background-color: #f2f1f2;
+  width: 75%;
+  box-shadow: 0 0 7px -2px #444444;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+#tasks {
+  background-color: white;
+  border: 1px solid;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#tasks th, #tasks td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+
+#tasks th{
+  background-color: #ffffff;
+  text-align: left;
+}
+
+#tasks tr:nth-child(odd){
+  background-color: #ececec;
+}
