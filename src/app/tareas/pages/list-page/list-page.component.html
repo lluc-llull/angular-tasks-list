@@ -30,7 +30,7 @@
             <td>{{item.title}}</td>
             <td>{{item.completed | statusPipe}}</td>
             <td>
-              <button class="completed" (click)="toggleCompleted(item)">Completed</button>
+              <button class="completed" (click)="toggleCompleted(item)">{{!item.completed | statusPipe}}</button>
               &nbsp;
               <a [routerLink]="['/tasks/task', item.id ]">
                 <button class="see-task">See Task</button>
