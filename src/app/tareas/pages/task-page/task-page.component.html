@@ -1,1 +1,18 @@
-<p>task-page works!</p>
+<h2>Task details</h2>
+
+<div class="details">
+  <div class="title">
+    <h3>Title: </h3>
+    <span>{{task!.title}}</span>
+  </div>
+
+  <div class="id">
+    <h3>ID: </h3>
+    <span>{{task!.id}}</span>
+  </div>
+
+  <div class="id">
+    <h3>Status: </h3>
+    <span>{{task!.completed | statusPipe}}</span>
+  </div>
+</div>

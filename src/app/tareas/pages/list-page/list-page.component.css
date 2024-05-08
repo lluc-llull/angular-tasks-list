@@ -1,0 +1,82 @@
+h2{
+  font-size: 27px;
+}
+
+.list{
+  background-color: #f2f1f2;
+  width: 75%;
+  box-shadow: 0 0 7px -2px #444444;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+#tasks {
+  background-color: white;
+  border: 1px solid;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#tasks th, #tasks td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+
+#tasks th{
+  background-color: #ffffff;
+  text-align: left;
+}
+
+#tasks tr:nth-child(odd){
+  background-color: #ececec;
+}
+
+.completed {
+  padding: 8px 15px;
+  border: none;
+  color: white;
+  background-color: green;
+  text-decoration: none;
+  display: inline-block;
+  font-family: inherit;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.completed:hover{
+  background-color: rgb(1, 88, 1);
+}
+
+.see-task {
+  padding: 8px 15px;
+  border: none;
+  color: white;
+  background-color: orange;
+  text-decoration: none;
+  display: inline-block;
+  font-family: inherit;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.see-task:hover{
+  background-color: rgb(228, 149, 3);
+}
+
+.delete {
+  padding: 8px 15px;
+  border: none;
+  color: white;
+  background-color: crimson;
+  text-decoration: none;
+  display: inline-block;
+  font-family: inherit;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.delete:hover {
+  background-color: rgb(192, 21, 55);
+}

@@ -55,6 +55,9 @@ export class FormPageComponent implements OnInit{
       const newTask: Task = this.myForm.value;
       this.taskService.addTask(newTask);
 
+      const tasksFromLocalStorage = JSON.parse(localStorage.getItem('tasks') || '[]');
+      tasksFromLocalStorage.push(newTask);
+      localStorage.setItem('tasks', JSON.stringify(tasksFromLocalStorage));
       console.log(this.taskService);
       this.myForm.reset();
     }
