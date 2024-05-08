@@ -12,6 +12,9 @@ h2{
   padding: 12px 20px;
   margin: 15px 0;
   box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .error {
@@ -27,6 +30,8 @@ button {
   text-decoration: none;
   display: inline-block;
   font-family: inherit;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 button:hover {
@@ -38,4 +43,6 @@ button:hover {
   width: 75%;
   padding: 20px;
   box-shadow: 0 0 7px -2px #444444;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
