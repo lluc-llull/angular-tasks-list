@@ -6,39 +6,39 @@
       <tr class="head">
 
         <th (click)="sortData('id')">ID
-          @if(sortColumn === 'id'){
-            <span>{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+          @if(getSortColumn === 'id'){
+            <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
           }
         </th>
         <th (click)="sortData('title')">Title
-          @if (sortColumn === 'title') {
-            <span>{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+          @if (getSortColumn === 'title') {
+            <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
           }
         </th>
         <th (click)="sortData('completed')">Status
-          @if(sortColumn === 'completed') {
-            <span>{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+          @if(getSortColumn === 'completed') {
+            <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
           }
         </th>
         <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      @for (item of tasksList; track $index) {
-        <tr class="items">
-            <td>{{item.id}}</td>
-            <td>{{item.title}}</td>
-            <td>{{item.completed | statusPipe}}</td>
-            <td>
-              <button class="completed" (click)="toggleCompleted(item)">{{!item.completed | statusPipe}}</button>
-              &nbsp;
-              <a [routerLink]="['/tasks/task', item.id ]">
-                <button class="see-task">See Task</button>
-              </a>
-              &nbsp;
-              <button class="delete" (click)="deleteValue(item)">Delete</button>
-            </td>
-        </tr>
+      @if(tasksList$ | async; as tasksList){
+        @for (item of tasksList; track $index) {
+          <tr class="items">
+              <td>{{item.id}}</td>
+              <td>{{item.title}}</td>
+              <td>{{item.completed | statusPipe}}</td>
+              <td>
+                <button class="completed" (click)="toggleCompleted(item)">{{!item.completed | statusPipe}}</button>
+                &nbsp;
+                <button (click)="navigateToTask(item.id)"class="see-task">See Task</button>
+                &nbsp;
+                <button class="delete" (click)="deleteValue(item)">Delete</button>
+              </td>
+          </tr>
+        }
       }
     </tbody>
   </table>

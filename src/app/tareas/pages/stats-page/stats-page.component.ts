@@ -1,34 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe } from '@angular/core';
 import { Task } from '../../interfaces/task.interface';
 import { TasksService } from '../../services/tasks.service';
 import { StatusPipe } from '../../pipes/status.pipe';
-import { Subscription, filter } from 'rxjs';
+import { Observable, Subscription, filter, map, of, subscribeOn, switchMap, tap } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-stats-page',
   standalone: true,
-  imports: [StatusPipe],
+  imports: [CommonModule, StatusPipe],
   templateUrl: './stats-page.component.html',
   styleUrl: './stats-page.component.css'
 })
 export class StatsPageComponent implements OnInit{
-  public tasksList: Task[] = [];
-  public tasksListCompleted: Task[] = [];
-  public tasksListPending: Task[] = [];
+  tasksList$!: Observable<Task[]>;
+  tasksListCompleted$!: Observable<Task[]>;
+  tasksListPending$!: Observable<Task[]>;
   private tasksSubscription: Subscription = new Subscription();
 
   constructor(private taskService: TasksService){ }
 
   ngOnInit(): void {
-    this.refreshTasksList();
+    //this.refreshTasksList();
 
-    this.tasksSubscription = this.taskService.getTasksObservable().subscribe(tasks => {
-      this.tasksListCompleted = tasks.filter(task => task.completed);
-    });
-
-    this.tasksSubscription = this.taskService.getTasksObservable().subscribe(tasks => {
-      this.tasksListPending = tasks.filter(task => !task.completed);
-    });
+    this.tasksList$ = this.taskService.getTasksObservable().pipe(
+      switchMap(tasks => {
+        this.tasksListCompleted$ = of(tasks.filter(task => task.completed));
+        this.tasksListPending$ = of(tasks.filter(task => !task.completed));
+        return of(tasks);
+      })
+    );
   }
 
   ngOnDestroy(): void {
@@ -36,34 +37,50 @@ export class StatsPageComponent implements OnInit{
   }
 
   refreshTasksList(): void {
-    //this.tasksList = JSON.parse(localStorage.getItem('tasks') || '[]');
-    this.tasksList = this.taskService.getTasks();
+    // this.taskService.getTasksObservable().pipe(
+    //   tap(tasks => {
+    //     this.tasksList$ = of(tasks);
+    //   })
+    // ).subscribe();
   }
 
-  public sortColumn: string = '';
-  public sortDirection: 'asc' | 'desc' = 'asc';
+  private _sortColumn: string = '';
+  private _sortDirection: 'asc' | 'desc' = 'asc';
+
+  get getSortDirection(): string {
+    return this._sortDirection;
+  }
+
+  get getSortColumn(): string {
+    return this._sortColumn;
+  }
 
   sortData(column: string): void {
-    if (column === this.sortColumn) {
-      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    if (column === this.getSortColumn) {
+      this._sortDirection = this._sortDirection === 'asc' ? 'desc' : 'asc';
     } else {
-      this.sortColumn = column;
-      this.sortDirection = 'asc';
+      this._sortColumn = column;
+      this._sortDirection = 'asc';
     }
 
-    this.tasksList.sort((a, b) => {
-      const aValue = this.getValue(a, this.sortColumn);
-      const bValue = this.getValue(b, this.sortColumn);
+    this.tasksList$ = this.tasksList$.pipe(
+      map(tasks => {
+        return tasks.sort((a, b) => {
+          const aValue = this.getValue(a, this.getSortColumn);
+          const bValue = this.getValue(b, this.getSortColumn);
 
-      if (aValue < bValue) {
-        return this.sortDirection === 'asc' ? -1 : 1;
-      } else if (aValue > bValue) {
-        return this.sortDirection === 'asc' ? 1 : -1;
-      } else {
-        return 0;
-      }
-    });
+          if (aValue < bValue) {
+            return this.getSortDirection === 'asc' ? -1 : 1;
+          } else if (aValue > bValue) {
+            return this.getSortDirection === 'asc' ? 1 : -1;
+          } else {
+            return 0;
+          }
+        });
+      })
+    );
   }
+
 
   getValue(item: any, column: string): any {
     if (column === 'completed') {

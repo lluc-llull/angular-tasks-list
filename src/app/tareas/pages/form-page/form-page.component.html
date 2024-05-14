@@ -6,15 +6,12 @@
   <div>
     <input type="text" class="text-input" formControlName="title" placeholder="Título de la tarea">
 
-    @if(isValidField('title')){
+    @if(errors.title == 'required'){
       <span class="error">
-        <b>{{getFieldError('title')}}</b>
+        <b>{{errors.msg}}</b>
       </span>
     }
 
-    <!-- <label>
-      <input type="checkbox" formControlName="completed"> Completed
-    </label> -->
   </div>
 
   <div>
