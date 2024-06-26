@@ -1,0 +1,145 @@
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal.show {
+  display: block;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.completed,
+.see-task,
+.delete,
+.actions-button {
+  padding: 8px 15px;
+  margin-right: 10px;
+  border: none;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  font-family: inherit;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.completed {
+  background-color: green;
+}
+
+.see-task {
+  background-color: orange;
+}
+
+.delete {
+  background-color: crimson;
+}
+
+.actions-button {
+  background-color: royalblue;
+}
+
+.completed:hover{
+  background-color: rgb(1, 88, 1);
+}
+
+.see-task:hover{
+  background-color: rgb(228, 149, 3);
+}
+
+.delete:hover {
+  background-color: rgb(192, 21, 55);
+}
+
+.completed .text,
+.see-task .text,
+.delete .text {
+  display: inline-block;
+}
+
+.completed .icon,
+.see-task .icon,
+.delete .icon {
+  display: none;
+}
+
+.actions-button .text{
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  /*.completed .text,*/
+  /*.see-task .text,*/
+  /*.delete .text,*/
+  /*.actions-button .text {*/
+  /*  display: none;*/
+  /*}*/
+
+  .completed::before {
+    content: url('/assets/svg/check_box_checked.svg');
+  }
+  .completed.checked::before {
+    content: url('/assets/svg/check_box_unchecked.svg');
+  }
+
+  .see-task::before {
+    content: url('/assets/svg/info.svg');
+  }
+
+  .delete::before {
+    content: url('/assets/svg/delete.svg');
+  }
+
+  .actions-button::before {
+    content: url("/assets/svg/more_info.svg");
+  }
+
+  .completed,
+  .see-task {
+    padding: 5px;
+    margin-right: 5px;
+  }
+
+  .delete {
+    padding: 5px;
+  }
+
+  .actions-button {
+    padding: 5px;
+  }
+
+}

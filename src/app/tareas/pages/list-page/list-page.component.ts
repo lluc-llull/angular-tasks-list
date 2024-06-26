@@ -1,19 +1,28 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { TasksService } from '../../services/tasks.service';
 import { Task } from '../../interfaces/task.interface';
 import { StatusPipe } from '../../pipes/status.pipe';
 import { Observable, Subscription, map, of, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import {ModalActionsComponent} from "../../components/modal-actions/modal-actions.component";
 
 @Component({
   selector: 'app-list-page',
   standalone: true,
-  imports: [CommonModule, RouterModule, StatusPipe],
+  imports: [CommonModule, RouterModule, StatusPipe, ModalActionsComponent],
   templateUrl: './list-page.component.html',
   styleUrl: './list-page.component.css'
 })
 export class ListPageComponent implements OnInit, OnDestroy {
+  modalOpen = false;
+
+  openModal() {
+    this.modalOpen = true;
+  }
+  handleClose() {
+    this.modalOpen = false;
+  }
   tasksList$!: Observable<Task[]>;
   private tasksSubscription: Subscription = new Subscription();
 

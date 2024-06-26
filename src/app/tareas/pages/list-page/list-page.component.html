@@ -20,7 +20,7 @@
             <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
           }
         </th>
-        <th>Actions</th>
+        <th class="actions"></th>
       </tr>
     </thead>
     <tbody>
@@ -40,8 +40,19 @@
                 <button class="delete" (click)="deleteValue(item)">
                   <span class="text">Delete</span>
                 </button>
+                <button class="actions-button" (click)="openModal()">
+                  <span class="text">Modal</span>
+                </button>
               </td>
           </tr>
+
+          <modal-actions [isOpen]="modalOpen"
+                         [item]="item"
+                         (toggleCompleted)="toggleCompleted($event)"
+                         (navigateToTask)="navigateToTask($event)"
+                         (deleteValue)="deleteValue($event)"
+                         (close)="handleClose()">
+          </modal-actions>
         }
       }
     </tbody>

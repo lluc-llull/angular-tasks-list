@@ -30,13 +30,18 @@ h2{
   text-align: left;
 }
 
+th.actions::after {
+  content: "Actions";
+}
+
 #tasks tr:nth-child(odd){
   background-color: #ececec;
 }
 
 .completed,
 .see-task,
-.delete {
+.delete,
+.actions-button {
   padding: 8px 15px;
   margin-right: 10px;
   border: none;
@@ -72,16 +77,28 @@ h2{
   background-color: rgb(192, 21, 55);
 }
 
+.actions-button {
+  background-color: royalblue;
+}
+
 .completed .text,
 .see-task .text,
 .delete .text {
-  display: inline-block; /* Ensure text is displayed */
+  display: inline-block;
 }
 
 .completed .icon,
 .see-task .icon,
 .delete .icon {
-  display: none; /* Hide icons by default */
+  display: none;
+}
+
+.actions-button{
+  display: none;
+}
+
+.actions-button .text{
+  display: none;
 }
 
 @media screen and (max-width: 768px) {
@@ -102,37 +119,57 @@ h2{
 
   .completed .text,
   .see-task .text,
-  .delete .text {
-    display: none; /* Hide text on small screens */
-  }
-
-  .completed::before {
-    content: url('/assets/svg/check_box_checked.svg');
-  }
-  .completed.checked::before {
-    content: url('/assets/svg/check_box_unchecked.svg');
-  }
-
-  .see-task::before {
-    content: url('/assets/svg/info.svg');
-  }
-
-  .delete::before {
-    content: url('/assets/svg/delete.svg');
+  .delete .text,
+  .actions-button .text {
+    display: none;
   }
 
   .completed,
-  .see-task{
-    padding: 5px;
-    margin-right: 5px;
+  .see-task,
+  .delete {
+    display: none;
   }
 
-  .delete{
-    padding: 5px;
+  /*.completed::before {*/
+  /*  content: url('/assets/svg/check_box_checked.svg');*/
+  /*}*/
+  /*.completed.checked::before {*/
+  /*  content: url('/assets/svg/check_box_unchecked.svg');*/
+  /*}*/
+
+  /*.see-task::before {*/
+  /*  content: url('/assets/svg/info.svg');*/
+  /*}*/
+
+  /*.delete::before {*/
+  /*  content: url('/assets/svg/delete.svg');*/
+  /*}*/
+
+  .actions-button::before {
+    content: url("/assets/svg/more_info.svg");
+  }
+
+  /*.completed,*/
+  /*.see-task {*/
+  /*  padding: 5px;*/
+  /*  margin-right: 5px;*/
+  /*}*/
+
+  /*.delete {*/
+  /*  padding: 5px;*/
+  /*}*/
+
+  .actions-button {
+    padding: 1px;
+    display: inline;
   }
 
   #tasks td {
     border: 1px solid #ddd;
     padding: 8px 0 8px 8px;
+  }
+
+  th.actions::after {
+    content: "Act.";
   }
 }
