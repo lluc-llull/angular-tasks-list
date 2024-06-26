@@ -14,12 +14,13 @@ h2{
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
 }
 
 .error {
   padding-left: 10px;
   color: crimson;
+  display: inline-block;
+  margin-top: 5px;
 }
 
 button {
@@ -41,8 +42,37 @@ button:hover {
 .form{
   background-color: #f2f1f2;
   width: 75%;
+  margin-bottom: 5px;
   padding: 20px;
   box-shadow: 0 0 7px -2px #444444;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+  .form{
+    background-color: #f2f1f2;
+    width: 90%;
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0 0 7px -2px #444444;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  h2 {
+    font-size: 27px;
+    margin: 10px 20px 0 20px;
+  }
+
+  .error {
+    display: block;
+    padding-left: 0;
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }
+
+  .text-input{
+    width: 100%;
+  }
 }

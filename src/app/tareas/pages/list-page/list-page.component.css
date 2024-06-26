@@ -9,6 +9,7 @@ h2{
   border-radius: 4px;
   box-sizing: border-box;
   padding: 20px;
+  margin-bottom: 5px;
 }
 
 #tasks {
@@ -33,50 +34,105 @@ h2{
   background-color: #ececec;
 }
 
-.completed {
+.completed,
+.see-task,
+.delete {
   padding: 8px 15px;
+  margin-right: 10px;
   border: none;
   color: white;
-  background-color: green;
   text-decoration: none;
   display: inline-block;
   font-family: inherit;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+.completed {
+  background-color: green;
+}
+
+.see-task {
+  background-color: orange;
+}
+
+.delete {
+  background-color: crimson;
 }
 
 .completed:hover{
   background-color: rgb(1, 88, 1);
 }
 
-.see-task {
-  padding: 8px 15px;
-  border: none;
-  color: white;
-  background-color: orange;
-  text-decoration: none;
-  display: inline-block;
-  font-family: inherit;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
 .see-task:hover{
   background-color: rgb(228, 149, 3);
 }
 
-.delete {
-  padding: 8px 15px;
-  border: none;
-  color: white;
-  background-color: crimson;
-  text-decoration: none;
-  display: inline-block;
-  font-family: inherit;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
 .delete:hover {
   background-color: rgb(192, 21, 55);
+}
+
+.completed .text,
+.see-task .text,
+.delete .text {
+  display: inline-block; /* Ensure text is displayed */
+}
+
+.completed .icon,
+.see-task .icon,
+.delete .icon {
+  display: none; /* Hide icons by default */
+}
+
+@media screen and (max-width: 768px) {
+  h2 {
+    font-size: 27px;
+    margin: 10px 20px 0 20px;
+  }
+
+  .list{
+    background-color: #f2f1f2;
+    width: 90%;
+    margin: 20px;
+    box-shadow: 0 0 7px -2px #444444;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 20px;
+  }
+
+  .completed .text,
+  .see-task .text,
+  .delete .text {
+    display: none; /* Hide text on small screens */
+  }
+
+  .completed::before {
+    content: url('/assets/svg/check_box_checked.svg');
+  }
+  .completed.checked::before {
+    content: url('/assets/svg/check_box_unchecked.svg');
+  }
+
+  .see-task::before {
+    content: url('/assets/svg/info.svg');
+  }
+
+  .delete::before {
+    content: url('/assets/svg/delete.svg');
+  }
+
+  .completed,
+  .see-task{
+    padding: 5px;
+    margin-right: 5px;
+  }
+
+  .delete{
+    padding: 5px;
+  }
+
+  #tasks td {
+    border: 1px solid #ddd;
+    padding: 8px 0 8px 8px;
+  }
 }

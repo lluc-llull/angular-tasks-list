@@ -31,11 +31,15 @@
               <td>{{item.title}}</td>
               <td>{{item.completed | statusPipe}}</td>
               <td>
-                <button class="completed" (click)="toggleCompleted(item)">{{!item.completed | statusPipe}}</button>
-                &nbsp;
-                <button (click)="navigateToTask(item.id)"class="see-task">See Task</button>
-                &nbsp;
-                <button class="delete" (click)="deleteValue(item)">Delete</button>
+                <button class="completed" (click)="toggleCompleted(item)" [ngClass]="{ 'checked': item.completed }">
+                  <span class="text">{{!item.completed | statusPipe}}</span>
+                </button>
+                <button (click)="navigateToTask(item.id)" class="see-task">
+                  <span class="text">See Task</span>
+                </button>
+                <button class="delete" (click)="deleteValue(item)">
+                  <span class="text">Delete</span>
+                </button>
               </td>
           </tr>
         }

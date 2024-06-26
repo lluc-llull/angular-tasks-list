@@ -1,17 +1,49 @@
+h3 {
+  margin-left: 20px;
+}
+
+hr {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 .content {
   display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
 }
 
 .side-menu {
   flex: 0 0 150px;
+  box-sizing: border-box;
 }
 
 .information {
   flex: 1;
   margin-left: 60px;
+  box-sizing: border-box;
 }
 
-h3{
-  margin-left: 20px;
-  margin-top: 20px;
+/* Estilos para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .side-menu {
+    flex: 0 0 auto;
+    width: 100%;
+    order: 1;
+  }
+
+  .information {
+    margin-left: 0;
+    order: 0;
+    width: 100%;
+    margin-bottom: 50px
+  }
+
+  h3 {
+    margin-left: 20px;
+  }
 }

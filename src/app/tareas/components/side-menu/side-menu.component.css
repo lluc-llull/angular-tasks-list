@@ -1,10 +1,44 @@
-a{
+a {
   text-decoration: none;
   color: black;
 }
 
-.navItem{
+.navItem {
   margin-top: 10px;
   font-size: 20px;
   margin-left: 20px;
+}
+
+.nav {
+  position: fixed;
+  width: 200px;
+  height: 100%;
+  padding-top: 20px;
+}
+
+/* Estilos para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  .nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    background-color: #f8f9fa;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .navItem {
+    margin: 0;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  a {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+  }
 }

@@ -9,4 +9,23 @@ h2{
   border-radius: 4px;
   box-sizing: border-box;
   padding: 20px;
+  margin-bottom: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  h2 {
+    font-size: 27px;
+    margin: 10px 20px 0 20px;
+  }
+
+  .details{
+    background-color: #f2f1f2;
+    width: 90%;
+    margin: 20px;
+    box-shadow: 0 0 7px -2px #444444;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 20px;
+  }
+
 }
