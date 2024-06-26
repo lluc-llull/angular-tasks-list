@@ -4,16 +4,19 @@ a {
 }
 
 .navItem {
-  margin-top: 10px;
+  padding: 10px 10px 10px 18px;
   font-size: 20px;
-  margin-left: 20px;
 }
 
 .nav {
   position: fixed;
-  width: 200px;
+  width: 160px;
   height: 100%;
-  padding-top: 20px;
+  background-color: #F6F6F6FF;
+}
+
+a.active .navItem {
+  background-color: #E0E0E0; /* Color de fondo cuando el enlace está activo */
 }
 
 /* Estilos para pantallas pequeñas */
@@ -25,7 +28,7 @@ a {
     height: auto;
     display: flex;
     justify-content: space-around;
-    background-color: #ececec;
+    background-color: #F6F6F6FF;
     padding-top: 10px;
     padding-bottom: 10px;
   }

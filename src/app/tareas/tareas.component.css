@@ -1,5 +1,9 @@
 h3 {
-  margin-left: 20px;
+  /*margin-left: 20px;*/
+  background-color: #444444;
+  padding: 20px;
+  margin: 0;
+  color: white;
 }
 
 hr {
@@ -44,7 +48,4 @@ hr {
     margin-bottom: 50px;
   }
 
-  h3 {
-    margin-left: 20px;
-  }
 }
