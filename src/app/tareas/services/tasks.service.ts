@@ -29,11 +29,8 @@ export class TasksService {
   }
 
   generateUniqueId(): number {
-    const timestamp = new Date().getTime();
-    const shortenedTimestamp = timestamp.toString().substr(-5);
-    const random = Math.floor(Math.random() * 100);
-    const uniqueId = parseInt('1' + shortenedTimestamp + random.toString().padStart(2, '0'), 10);
-    return uniqueId;
+    const random = Math.floor(Math.random() * 10000);
+    return parseInt(random.toString().padStart(4, '0'), 10);
   }
 
   updateTask(updatedTask: Task): void {
