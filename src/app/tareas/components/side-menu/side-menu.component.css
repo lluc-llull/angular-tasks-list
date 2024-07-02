@@ -16,7 +16,7 @@ a {
 }
 
 a.active .navItem {
-  background-color: #E0E0E0; /* Color de fondo cuando el enlace está activo */
+  background-color: #E0E0E0;
 }
 
 /* Estilos para pantallas pequeñas */
@@ -43,5 +43,9 @@ a.active .navItem {
     flex: 1;
     padding: 10px;
     text-align: center;
+  }
+
+  a.active .navItem {
+    background-color: transparent;
   }
 }

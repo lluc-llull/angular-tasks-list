@@ -23,6 +23,7 @@ export class ListPageComponent implements OnInit, OnDestroy {
   handleClose() {
     this.modalOpen = false;
   }
+
   tasksList$!: Observable<Task[]>;
   private tasksSubscription: Subscription = new Subscription();
 
@@ -102,4 +103,6 @@ export class ListPageComponent implements OnInit, OnDestroy {
   navigateToTask(taskId: number) {
     this.router.navigate(['/tasks/task', taskId]);
   }
+
+
 }

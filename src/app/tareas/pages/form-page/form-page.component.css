@@ -7,20 +7,107 @@ h2{
   font-size: 23px;
 }
 
+.first-row {
+  display: flex;
+  align-items: flex-start;
+}
+
+.first-element-row1 {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.second-element-row1 {
+  flex: 1;
+}
+
+.second-row {
+  display: flex;
+  align-items: flex-start;
+}
+
+.first-element-row2 {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.second-element-row2 {
+  flex: 1;
+}
+
+.input-container {
+  margin-bottom: 20px;
+}
+
 .text-input {
-  width: 70%;
+  width: 97%;
   padding: 12px 20px;
-  margin: 15px 0;
+  margin: 15px 0px 0px 0px;
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
+.text-input::placeholder {
+  color: #888;
+}
+
+.text-input-select {
+  width: 97%;
+  padding: 12px 20px;
+  margin: 15px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #888;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.selected-option {
+  font-weight: bold;
+  color: #8F8F8F;
+}
+
+.details-input {
+  width: 97%;
+  min-height: 100px;
+  padding: 12px 20px;
+  margin: 15px 0px 0px 0px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  vertical-align: top;
+  display: block;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.details-input::placeholder {
+  vertical-align: top;
+}
+
 .error {
   padding-left: 10px;
   color: crimson;
-  display: inline-block;
+  display: block;
   margin-top: 5px;
+  font-size: small;
+}
+
+.custom-datepicker{
+  width: 20%;
+  padding: 12px 20px;
+  margin: 15px 0px 0px 0px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 button {
@@ -41,7 +128,7 @@ button:hover {
 
 .form{
   background-color: #f2f1f2;
-  width: 75%;
+  width: 97%;
   margin-bottom: 5px;
   padding: 20px;
   box-shadow: 0 0 7px -2px #444444;
@@ -76,3 +163,13 @@ button:hover {
     width: 100%;
   }
 }
+
+@media screen and (min-width: 769px) and (max-width: 1099px) {
+  .error {
+    display: block;
+    padding-left: 0;
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }
+}
+

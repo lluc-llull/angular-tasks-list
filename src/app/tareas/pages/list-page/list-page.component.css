@@ -34,8 +34,12 @@ th.actions::after {
   content: "Actions";
 }
 
-#tasks tr:nth-child(odd){
-  background-color: #ececec;
+.odd-row {
+  background-color: #f6f6f6;
+}
+
+.even-row {
+  background-color: #e8e8e8;
 }
 
 .completed,

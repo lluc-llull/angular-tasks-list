@@ -20,16 +20,28 @@
             <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
           }
         </th>
+        <th (click)="sortData('priority')">Priority
+          @if(getSortColumn === 'priority') {
+            <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
+          }
+        </th>
+        <th (click)="sortData('createdAt')">Created at
+          @if(getSortColumn === 'createdAt') {
+            <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
+          }
+        </th>
         <th class="actions"></th>
       </tr>
     </thead>
     <tbody>
       @if(tasksList$ | async; as tasksList){
-        @for (item of tasksList; track $index) {
-          <tr class="items">
+        @for (item of tasksList; track $index; let odd = $odd, even = $even) {
+          <tr class="items" [ngClass]="{'odd-row': odd, 'even-row': even}">
               <td>{{item.id}}</td>
               <td>{{item.title}}</td>
               <td>{{item.completed | statusPipe}}</td>
+              <td>{{item.priority.name}}</td>
+              <td>{{item.createdAt | date:'shortDate'}}</td>
               <td>
                 <button class="completed" (click)="toggleCompleted(item)" [ngClass]="{ 'checked': item.completed }">
                   <span class="text">{{!item.completed | statusPipe}}</span>

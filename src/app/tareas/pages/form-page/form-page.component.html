@@ -2,16 +2,49 @@
 <h2>New task</h2>
 
 <form [formGroup]="myForm" (ngSubmit)="onSave()" class="form">
-  <label class="title">Title</label>
-  <div>
-    <input type="text" class="text-input" formControlName="title" placeholder="Título de la tarea">
+  <div class="first-row">
+    <div class="first-element-row1">
+      <label class="title">Title</label>
+      <div class="input-container">
+        <input type="text" class="text-input" formControlName="title" placeholder="Title of the task">
 
-    @if(errors.title == 'required'){
-      <span class="error">
-        <b>{{errors.msg}}</b>
-      </span>
-    }
+        @if(errors.title == 'required'){
+          <span class="error">{{errors.msg}}</span>
+        }
 
+      </div>
+    </div>
+    <div class="second-element-row1">
+     <label class="title">Priority</label>
+     <div>
+       <select class="text-input-select" formControlName="priority" >
+         <option value="" selected class="selected-option">Select the priority</option>
+         @for (item of priorityOptions; track $index) {
+           <option [ngValue]="item">{{ item.name }}</option>
+         }
+       </select>
+     </div>
+    </div>
+  </div>
+
+  <div class="second-row">
+    <div class="first-element-row2">
+      <label class="title">Description</label>
+      <div class="input-container">
+        <textarea type="text" class="details-input" formControlName="description" placeholder="Description of the task"></textarea>
+
+        @if(errors.title == 'minlength'){
+          <span class="error">{{errors.msg}}</span>
+        }
+
+      </div>
+    </div>
+    <div class="second-element-row2">
+      <label class="title">Due Date</label>
+      <div>
+        <input type="date" class="custom-datepicker" formControlName="dueDate">
+      </div>
+    </div>
   </div>
 
   <div>
