@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class StatusPipe implements PipeTransform {
 
   transform(value: boolean): string {
-    return value ? 'Completed' : 'Pending';
+    return value ? 'status' : 'Pending';
   }
 
 }

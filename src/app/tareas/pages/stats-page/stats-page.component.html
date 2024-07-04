@@ -1,123 +1,28 @@
 <h2>Stats</h2>
 
 <div class="stats">
-  <div class="all">
-    @if(tasksList$ | async; as tasksList){
-      <h3>Tareas Totales - {{tasksList.length}}</h3>
-    }
-
-    <table id="tasks">
-      <thead>
-        <tr class="head">
-
-          <th (click)="sortData('id')">ID
-            @if(getSortColumn === 'id'){
-              <span>{{ getSortDirection}}</span>
-            }
-          </th>
-          <th (click)="sortData('title')">Title
-            @if (getSortColumn === 'title') {
-              <span>{{ getSortDirection}}</span>
-            }
-          </th>
-          <th (click)="sortData('completed')">Status
-            @if(getSortColumn === 'completed') {
-              <span>{{ getSortDirection }}</span>
-            }
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        @if(tasksList$ | async; as tasksList){
-          @for (item of tasksList; track $index) {
-            <tr class="items">
-                <td>{{item.id}}</td>
-                <td>{{item.title}}</td>
-                <td>{{item.completed | statusPipe}}</td>
-            </tr>
-          }
-        }
-      </tbody>
-    </table>
+  <div class="chart-container-status">
+    <div class="chart-status">
+      <h3>Pending</h3>
+      <canvas id="pendingChart">{{ chartPending }}</canvas>
+    </div>
+    <div class="chart-status">
+      <h3>On Process</h3>
+      <canvas id="onProcessChart">{{ chartOnProcess }}</canvas>
+    </div>
+    <div class="chart-status">
+      <h3>Completed</h3>
+      <canvas id="completedChart">{{ chartCompleted }}</canvas>
+    </div>
   </div>
-  <hr>
-  <div class="all">
-    @if(tasksListCompleted$ | async; as tasksListCompleted){
-      <h3>Tareas Completadas - {{tasksListCompleted.length}}</h3>
-    }
-
-    <table id="tasks">
-      <thead>
-        <tr class="head">
-
-          <th (click)="sortData('id')">ID
-            @if(getSortColumn === 'id'){
-              <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
-            }
-          </th>
-          <th (click)="sortData('title')">Title
-            @if (getSortColumn === 'title') {
-              <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
-            }
-          </th>
-          <th (click)="sortData('completed')">Status
-            @if(getSortColumn === 'completed') {
-              <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
-            }
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        @if(tasksListCompleted$ | async; as tasksListCompleted){
-          @for (item of tasksListCompleted; track $index) {
-            <tr class="items">
-                <td>{{item.id}}</td>
-                <td>{{item.title}}</td>
-                <td>{{item.completed | statusPipe}}</td>
-            </tr>
-          }
-        }
-      </tbody>
-    </table>
-  </div>
-  <hr>
-  <div class="all">
-    @if(tasksListPending$ | async; as tasksListPending){
-      <h3>Tareas Pendientes - {{tasksListPending.length}}</h3>
-    }
-
-    <table id="tasks">
-      <thead>
-        <tr class="head">
-
-          <th (click)="sortData('id')">ID
-            @if(getSortColumn === 'id'){
-              <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
-            }
-          </th>
-          <th (click)="sortData('title')">Title
-            @if (getSortColumn === 'title') {
-              <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
-            }
-          </th>
-          <th (click)="sortData('completed')">Status
-            @if(getSortColumn === 'completed') {
-              <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
-            }
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        @if(tasksListPending$ | async; as tasksListPending){
-          @for (item of tasksListPending; track $index) {
-            <tr class="items">
-                <td>{{item.id}}</td>
-                <td>{{item.title}}</td>
-                <td>{{item.completed | statusPipe}}</td>
-            </tr>
-          }
-        }
-      </tbody>
-    </table>
+  <div class="chart-container-priorities">
+    <div class="chart-priorities">
+      <h3>Monthly</h3>
+      <canvas id="monthlyChart">{{ chartMonthly }}</canvas>
+    </div>
+    <div class="chart-priorities">
+      <h3>Priorities Chart</h3>
+      <canvas id="prioritiesChart">{{ chartPriorities }}</canvas>
+    </div>
   </div>
 </div>

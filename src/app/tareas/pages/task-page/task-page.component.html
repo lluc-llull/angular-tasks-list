@@ -1,18 +1,43 @@
 <h2>Task details</h2>
 
 <div class="details">
-  <div class="title">
-    <h3>Title: </h3>
-    <span>{{task!.title}}</span>
+  <div class="first-row">
+    <div class="id">
+      <h3>ID:</h3>
+      <span>{{task!.id}}</span>
+    </div>
+    <div class="title">
+      <h3>Title:</h3>
+      <span>{{task!.title}}</span>
+    </div>
   </div>
 
-  <div class="id">
-    <h3>ID: </h3>
-    <span>{{task!.id}}</span>
-  </div>
-
-  <div class="id">
-    <h3>Status: </h3>
-    <span>{{task!.completed | statusPipe}}</span>
+  <div class="second-row">
+    <div class="description">
+      <h3>Description:</h3>
+      <span class="description-container">{{task!.description}}</span>
+    </div>
+    <div class="group">
+      <div class="group-row">
+        <div class="status">
+          <h3>Status:</h3>
+          <span>{{task!.status.name}}</span>
+        </div>
+        <div class="priority">
+          <h3>Priority:</h3>
+          <span>{{task!.priority.name}}</span>
+        </div>
+      </div>
+      <div class="group-row">
+        <div class="due-date">
+          <h3>Due Date:</h3>
+          <span>{{task!.dueDate | date:'shortDate'}}</span>
+        </div>
+        <div class="created-at">
+          <h3>Created At:</h3>
+          <span>{{task!.createdAt | date:'short'}}</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

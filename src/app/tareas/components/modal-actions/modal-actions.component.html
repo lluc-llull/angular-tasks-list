@@ -1,9 +1,9 @@
 <div class="modal" [ngClass]="{'show': isOpen}">
   <div class="modal-content">
     <span class="close" (click)="closeModal()">&times;</span>
-    <button class="completed" (click)="onToggleCompleted()" [ngClass]="{ 'checked': item.completed }">
-      <span class="text">{{!item.completed | statusPipe}}</span>
-    </button>
+<!--    <button class="status" (click)="onTogglestatus()" [ngClass]="{ 'checked': item.status }">-->
+<!--      <span class="text">{{!item.status | statusPipe}}</span>-->
+<!--    </button>-->
     <button (click)="onNavigateToTask()" class="see-task">
       <span class="text">See Task</span>
     </button>

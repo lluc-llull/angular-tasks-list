@@ -4,7 +4,7 @@ h2{
 
 .stats{
   background-color: #f2f1f2;
-  width: 75%;
+  width: 97%;
   box-shadow: 0 0 7px -2px #444444;
   border-radius: 4px;
   box-sizing: border-box;
@@ -35,13 +35,68 @@ h2{
   background-color: #ececec;
 }
 
+.chart-container-status {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.chart-status {
+  flex: 1;
+  max-width: 30%;
+  margin: 0 10px;
+  box-shadow: 0 0 6px 0px #b9b7b7;
+  border-radius: 4px;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: white;
+}
+
+.chart-container-priorities {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 50px 10px 0px 20px;
+}
+
+.chart-priorities {
+  flex: 1;
+  max-width: 50%;
+  margin: 0 10px;
+  box-shadow: 0 0 6px 0px #b9b7b7;
+  border-radius: 4px;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: white;
+}
+
+#pendingChart, #onProcessChart, #completedChart{
+  margin: 0px 20px 20px 20px;
+}
+
+#monthlyChart {
+  margin: 0px 20px 20px 20px;
+}
+
+#prioritiesChart{
+  margin: 0px 20px 20px 20px;
+}
+
+canvas {
+  width: 100%;
+  height: auto;
+  background-color: white;
+  margin: 0px 0px 20px 0px;
+}
+
 @media screen and (max-width: 768px) {
   h2 {
     font-size: 27px;
     margin: 10px 20px 0 20px;
   }
 
-  .stats{
+  .stats {
     background-color: #f2f1f2;
     width: 90%;
     margin: 20px;
@@ -49,5 +104,15 @@ h2{
     border-radius: 4px;
     box-sizing: border-box;
     padding: 20px;
+  }
+
+  .chart-container-status {
+    display: block;
+    margin-top: 10px;
+  }
+
+  .chart {
+    max-width: 100%;
+    margin: 10px 0;
   }
 }

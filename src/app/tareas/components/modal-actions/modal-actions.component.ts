@@ -14,16 +14,16 @@ export class ModalActionsComponent {
   @Output() close = new EventEmitter<void>();
 
   @Input() item: any;
-  // @Input() toggleCompleted: (item: any) => void = () => {};
+  // @Input() togglestatus: (item: any) => void = () => {};
   // @Input() navigateToTask: (id: number) => void = () => {};
   // @Input() deleteValue: (item: any) => void = () => {};
 
-  @Output() toggleCompleted = new EventEmitter<any>();
+  @Output() togglestatus = new EventEmitter<any>();
   @Output() navigateToTask = new EventEmitter<number>();
   @Output() deleteValue = new EventEmitter<any>();
 
-  onToggleCompleted() {
-    this.toggleCompleted.emit(this.item);
+  onTogglestatus() {
+    this.togglestatus.emit(this.item);
   }
 
   onNavigateToTask() {

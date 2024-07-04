@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../interfaces/task.interface';
-import { BehaviorSubject, Observable } from 'rxjs';
+import {BehaviorSubject, map, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -51,5 +51,26 @@ export class TasksService {
       observer.next(task);
       observer.complete();
     });
+  }
+
+  getTasksByPriority(priorityName: string): Observable<Task[]> {
+    return this.tasksSubject.asObservable().pipe(
+      map(tasks => tasks.filter(task => task.priority.name === priorityName))
+    );
+  }
+
+  getTasksByMonth(): Observable<Task[]> {
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth()+1;
+    const currentYear = currentDate.getFullYear();
+
+    return this.tasksSubject.pipe(
+      map(tasks =>
+        tasks.filter(task => {
+          const taskDate = new Date(task.createdAt);
+          return taskDate.getMonth() === currentMonth && taskDate.getFullYear() === currentYear;
+        })
+      )
+    );
   }
 }

@@ -1,7 +1,7 @@
 export interface Task {
   id: number;
   title: string;
-  completed: boolean;
+  status: Status;
   priority: Priority;
   createdAt: Date;
   dueDate: Date;
@@ -11,9 +11,13 @@ export interface Task {
 export interface Priority {
   id: number;
   name: string;
+  color: string;
 }
 
 export interface Status {
   id: number;
   name: string;
+  color: string;
 }
+
+

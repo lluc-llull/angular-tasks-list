@@ -4,7 +4,7 @@ h2{
 
 .list{
   background-color: #f2f1f2;
-  width: 75%;
+  width: 97%;
   box-shadow: 0 0 7px -2px #444444;
   border-radius: 4px;
   box-sizing: border-box;
@@ -42,7 +42,7 @@ th.actions::after {
   background-color: #e8e8e8;
 }
 
-.completed,
+.status,
 .see-task,
 .delete,
 .actions-button {
@@ -57,7 +57,7 @@ th.actions::after {
   box-sizing: border-box;
 }
 
-.completed {
+.status {
   background-color: green;
 }
 
@@ -69,7 +69,7 @@ th.actions::after {
   background-color: crimson;
 }
 
-.completed:hover{
+.status:hover{
   background-color: rgb(1, 88, 1);
 }
 
@@ -85,13 +85,13 @@ th.actions::after {
   background-color: royalblue;
 }
 
-.completed .text,
+.status .text,
 .see-task .text,
 .delete .text {
   display: inline-block;
 }
 
-.completed .icon,
+.status .icon,
 .see-task .icon,
 .delete .icon {
   display: none;
@@ -121,23 +121,23 @@ th.actions::after {
     padding: 20px;
   }
 
-  .completed .text,
+  .status .text,
   .see-task .text,
   .delete .text,
   .actions-button .text {
     display: none;
   }
 
-  .completed,
+  .status,
   .see-task,
   .delete {
     display: none;
   }
 
-  /*.completed::before {*/
+  /*.status::before {*/
   /*  content: url('/assets/svg/check_box_checked.svg');*/
   /*}*/
-  /*.completed.checked::before {*/
+  /*.status.checked::before {*/
   /*  content: url('/assets/svg/check_box_unchecked.svg');*/
   /*}*/
 
@@ -153,7 +153,7 @@ th.actions::after {
     content: url("/assets/svg/more_info.svg");
   }
 
-  /*.completed,*/
+  /*.status,*/
   /*.see-task {*/
   /*  padding: 5px;*/
   /*  margin-right: 5px;*/
@@ -175,5 +175,14 @@ th.actions::after {
 
   th.actions::after {
     content: "Act.";
+  }
+
+  .created-at{
+    display: none;
+  }
+
+  #tasks th{
+    text-align: center;
+    padding: 4px;
   }
 }

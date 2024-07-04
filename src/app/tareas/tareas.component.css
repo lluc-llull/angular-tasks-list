@@ -1,4 +1,13 @@
+a{
+  text-decoration: none;
+}
+
 h3 {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
   /*margin-left: 20px;*/
   background-color: #444444;
   padding: 20px;
@@ -15,6 +24,7 @@ hr {
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
+  margin-top: 64px;
 }
 
 .side-menu {

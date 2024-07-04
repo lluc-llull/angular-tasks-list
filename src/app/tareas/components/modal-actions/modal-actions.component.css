@@ -42,7 +42,7 @@
   margin-top: 0;
 }
 
-.completed,
+.status,
 .see-task,
 .delete,
 .actions-button {
@@ -57,7 +57,7 @@
   box-sizing: border-box;
 }
 
-.completed {
+.status {
   background-color: green;
 }
 
@@ -73,7 +73,7 @@
   background-color: royalblue;
 }
 
-.completed:hover{
+.status:hover{
   background-color: rgb(1, 88, 1);
 }
 
@@ -85,13 +85,13 @@
   background-color: rgb(192, 21, 55);
 }
 
-.completed .text,
+.status .text,
 .see-task .text,
 .delete .text {
   display: inline-block;
 }
 
-.completed .icon,
+.status .icon,
 .see-task .icon,
 .delete .icon {
   display: none;
@@ -102,17 +102,17 @@
 }
 
 @media screen and (max-width: 768px) {
-  /*.completed .text,*/
+  /*.status .text,*/
   /*.see-task .text,*/
   /*.delete .text,*/
   /*.actions-button .text {*/
   /*  display: none;*/
   /*}*/
 
-  .completed::before {
+  .status::before {
     content: url('/assets/svg/check_box_checked.svg');
   }
-  .completed.checked::before {
+  .status.checked::before {
     content: url('/assets/svg/check_box_unchecked.svg');
   }
 
@@ -128,7 +128,7 @@
     content: url("/assets/svg/more_info.svg");
   }
 
-  .completed,
+  .status,
   .see-task {
     padding: 5px;
     margin-right: 5px;

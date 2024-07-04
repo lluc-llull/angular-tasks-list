@@ -84,7 +84,7 @@ export class ListPageComponent implements OnInit, OnDestroy {
   }
 
   getValue(item: any, column: string): any {
-    if (column === 'completed') {
+    if (column === 'status') {
       return item[column] ? 1 : 0;
     }
     return item[column];
@@ -95,9 +95,9 @@ export class ListPageComponent implements OnInit, OnDestroy {
     this.refreshTasksList();
   }
 
-  toggleCompleted(task: Task): void {
-    task.completed = !task.completed;
-    this.taskService.updateTask(task);
+  togglestatus(task: Task): void {
+    // task.status = !task.status;
+    // this.taskService.updateTask(task);
   }
 
   navigateToTask(taskId: number) {

@@ -13,9 +13,22 @@ import {CommonModule} from "@angular/common";
   styleUrl: './form-page.component.css'
 })
 export class FormPageComponent implements OnInit{
+  statusOptions : Status[] = [
+    {id: 1, name: 'Pending', color: '#5D6D7E'},
+    {id: 2, name: 'On process', color: '#AF7AC5'},
+    {id: 3, name: 'Completed', color: '#58D68D'},
+  ]
+
+  priorityOptions : Priority[] = [
+    {id: 1, name: 'Urgent', color: '#EC7063'},
+    {id: 2, name: 'High', color: '#F4D03F'},
+    {id: 3, name: 'Media', color: '#5DADE2'},
+    {id: 4, name: 'Low', color: '#AAB7B8'},
+  ]
+
   public myForm : FormGroup = this.fb.group({
     title: ['', Validators.required],
-    completed: [false],
+    status: [this.statusOptions[0]],
     priority: ['', Validators.required],
     createdAt: [],
     description: ['', Validators.minLength(10)],
@@ -24,28 +37,15 @@ export class FormPageComponent implements OnInit{
 
   errors: { title: string, msg: string } = { title: '', msg: '' };
 
-  statusOptions : Status[] = [
-    {id: 1, name: 'Pending'},
-    {id: 2, name: 'On proces'},
-    {id: 3, name: 'Completed'},
-  ]
-
-  priorityOptions : Priority[] = [
-    {id: 1, name: 'Urgent'},
-    {id: 2, name: 'High'},
-    {id: 3, name: 'Media'},
-    {id: 4, name: 'Low'},
-  ]
-
   constructor(private fb: FormBuilder,  private taskService: TasksService) {}
 
   ngOnInit(): void {
 
-    const completedControl = this.myForm.get('completed');
-    if (completedControl) {
-      completedControl.valueChanges.subscribe(value => {
+    const statusControl = this.myForm.get('status');
+    if (statusControl) {
+      statusControl.valueChanges.subscribe(value => {
         if (value === null) {
-          completedControl.setValue(false);
+          statusControl.setValue(false);
         }
       });
     }

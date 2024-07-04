@@ -15,17 +15,22 @@
             <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
           }
         </th>
-        <th (click)="sortData('completed')">Status
-          @if(getSortColumn === 'completed') {
-            <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
-          }
-        </th>
         <th (click)="sortData('priority')">Priority
           @if(getSortColumn === 'priority') {
             <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
           }
         </th>
-        <th (click)="sortData('createdAt')">Created at
+        <th (click)="sortData('dueDate')">Due date
+          @if(getSortColumn === 'dueDate') {
+            <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
+          }
+        </th>
+        <th (click)="sortData('status')">Status
+          @if(getSortColumn === 'status') {
+            <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
+          }
+        </th>
+        <th class="created-at" (click)="sortData('createdAt')">Created at
           @if(getSortColumn === 'createdAt') {
             <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
           }
@@ -39,13 +44,14 @@
           <tr class="items" [ngClass]="{'odd-row': odd, 'even-row': even}">
               <td>{{item.id}}</td>
               <td>{{item.title}}</td>
-              <td>{{item.completed | statusPipe}}</td>
               <td>{{item.priority.name}}</td>
-              <td>{{item.createdAt | date:'shortDate'}}</td>
+              <td>{{item.dueDate | date:'shortDate'}}</td>
+              <td>{{item.status.name}}</td>
+              <td class="created-at">{{item.createdAt | date:'shortDate'}}</td>
               <td>
-                <button class="completed" (click)="toggleCompleted(item)" [ngClass]="{ 'checked': item.completed }">
-                  <span class="text">{{!item.completed | statusPipe}}</span>
-                </button>
+<!--                <button class="status" (click)="togglestatus(item)" [ngClass]="{ 'checked': item.status }">-->
+<!--                  <span class="text">{{!item.status | statusPipe}}</span>-->
+<!--                </button>-->
                 <button (click)="navigateToTask(item.id)" class="see-task">
                   <span class="text">See Task</span>
                 </button>
@@ -60,11 +66,18 @@
 
           <modal-actions [isOpen]="modalOpen"
                          [item]="item"
-                         (toggleCompleted)="toggleCompleted($event)"
                          (navigateToTask)="navigateToTask($event)"
                          (deleteValue)="deleteValue($event)"
                          (close)="handleClose()">
           </modal-actions>
+
+<!--          <modal-actions [isOpen]="modalOpen"-->
+<!--                         [item]="item"-->
+<!--                         (togglestatus)="togglestatus($event)"-->
+<!--                         (navigateToTask)="navigateToTask($event)"-->
+<!--                         (deleteValue)="deleteValue($event)"-->
+<!--                         (close)="handleClose()">-->
+<!--          </modal-actions>-->
         }
       }
     </tbody>

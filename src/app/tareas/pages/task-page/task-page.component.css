@@ -1,15 +1,63 @@
-h2{
+h2 {
   font-size: 27px;
 }
 
-.details{
+.details {
   background-color: #f2f1f2;
-  width: 75%;
+  width: 97%; /
   box-shadow: 0 0 7px -2px #444444;
   border-radius: 4px;
   box-sizing: border-box;
   padding: 20px;
   margin-bottom: 5px;
+}
+
+.first-row, .second-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0 20px;
+  width: 100%;
+}
+
+.id, .title, .description, .status, .priority, .due-date, .created-at {
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: 10px;
+}
+
+.description {
+  flex-basis: 100%;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.group-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+h3 {
+  margin: 0 0 10px 0;
+}
+
+span {
+  display: block;
+  width: 100%;
+  background-color: white;
+  padding: 10px 10px 10px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.description-container{
+  min-height: 100px;
 }
 
 @media screen and (max-width: 768px) {
@@ -18,14 +66,36 @@ h2{
     margin: 10px 20px 0 20px;
   }
 
-  .details{
+  .details {
     background-color: #f2f1f2;
     width: 90%;
-    margin: 20px;
+    margin: 20px 20px 50px 20px;
     box-shadow: 0 0 7px -2px #444444;
     border-radius: 4px;
     box-sizing: border-box;
     padding: 20px;
   }
 
+  .first-row, .second-row, .group-row {
+    width: 100%;
+  }
+
+  .id, .title, .description, .status, .priority, .due-date, .created-at {
+    margin-right: 0;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+
+  .description {
+    flex-basis: auto;
+  }
+
+  .group-row {
+    margin-bottom: 15px;
+  }
+
+  span {
+    display: block;
+    width: 100%;
+  }
 }
