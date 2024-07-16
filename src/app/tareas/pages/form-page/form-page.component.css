@@ -55,7 +55,7 @@ h2{
 .text-input-select {
   width: 97%;
   padding: 12px 20px;
-  margin: 15px 0;
+  margin: 15px 0px 0px 0px;
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -96,6 +96,15 @@ h2{
   display: block;
   margin-top: 5px;
   font-size: small;
+}
+
+.success {
+  padding-left: 10px;
+  color: green;
+  display: inline-block;
+  margin-top: 5px;
+  font-size: small;
+  font-weight: bold;
 }
 
 .custom-datepicker{

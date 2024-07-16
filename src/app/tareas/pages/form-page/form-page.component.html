@@ -8,8 +8,8 @@
       <div class="input-container">
         <input type="text" class="text-input" formControlName="title" placeholder="Title of the task">
 
-        @if(errors.title == 'required'){
-          <span class="error">{{errors.msg}}</span>
+        @if(myForm.get('title')?.errors?.['required'] && myForm.get('title')?.touched){
+          <span class="error">{{ errors['title'] }}</span>
         }
 
       </div>
@@ -23,6 +23,10 @@
            <option [ngValue]="item">{{ item.name }}</option>
          }
        </select>
+
+       @if(myForm.get('priority')?.errors?.['required'] && myForm.get('priority')?.touched){
+         <span class="error">{{ errors['priority'] }}</span>
+       }
      </div>
     </div>
   </div>
@@ -33,8 +37,11 @@
       <div class="input-container">
         <textarea type="text" class="details-input" formControlName="description" placeholder="Description of the task"></textarea>
 
-        @if(errors.title == 'minlength'){
-          <span class="error">{{errors.msg}}</span>
+<!--        @if(errors.title == 'minlength'){-->
+<!--          <span class="error">{{errors.msg}}</span>-->
+<!--        }-->
+        @if(myForm.get('description')?.errors?.['minlength'] && myForm.get('description')?.touched){
+          <span class="error">{{ errors['description'] }}</span>
         }
 
       </div>
@@ -43,6 +50,11 @@
       <label class="title">Due Date</label>
       <div>
         <input type="date" class="custom-datepicker" formControlName="dueDate">
+
+        @if(myForm.get('dueDate')?.errors?.['required'] && myForm.get('dueDate')?.touched){
+          <span class="error">{{ errors['dueDate'] }}</span>
+        }
+
       </div>
     </div>
   </div>
@@ -51,5 +63,8 @@
     <button type="submit" [disabled]="myForm.invalid">
       Guardar
     </button>
+    @if(taskSaved){
+      <span class="success">Tarea guardada</span>
+    }
   </div>
 </form>

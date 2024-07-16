@@ -32,10 +32,17 @@ export class FormPageComponent implements OnInit{
     priority: ['', Validators.required],
     createdAt: [],
     description: ['', Validators.minLength(10)],
-    dueDate: [],
+    dueDate: [null, Validators.required],
   });
 
-  errors: { title: string, msg: string } = { title: '', msg: '' };
+  errors: { [key: string]: string } = {
+    title: 'This field is required',
+    priority: 'This field is required',
+    description: 'Details too short, minimum of 10 characters',
+    dueDate: 'This field is required',
+  };
+
+  taskSaved : boolean = false;
 
   constructor(private fb: FormBuilder,  private taskService: TasksService) {}
 
@@ -49,66 +56,57 @@ export class FormPageComponent implements OnInit{
         }
       });
     }
-    this.getFieldError('title');
 
-    const titleControl = this.myForm.get('title');
+    this.myForm.valueChanges.subscribe(() => {
+      this.getFieldErrors();
+    });
 
-    if (titleControl) {
-      titleControl.valueChanges.subscribe(() => {
-        this.getFieldError('title');
-      });
-    }
+  }
 
-    this.getFieldError('description');
-
-    const descriptionControl = this.myForm.get('description');
-
-    if (descriptionControl) {
-      descriptionControl.valueChanges.subscribe(() => {
-        this.getFieldError('description');
-      });
+  getFieldErrors(): void {
+    for (const field in this.myForm.controls) {
+      if (this.myForm.controls.hasOwnProperty(field)) {
+        const control = this.myForm.get(field);
+        if (control && control.errors && control.touched) {
+          this.setErrorMessages(field, control.errors);
+        }
+      }
     }
   }
 
-  // isValidField(field: string):boolean|null {
-  //   return this.myForm.controls[field].errors && this.myForm.controls[field].touched;
-  // }
-
-  getFieldError(field: string): void {
-    if (!this.myForm.controls[field]) {
-      return;
+  setErrorMessages(field: string, errors: any): void {
+    switch (field) {
+      case 'title':
+      case 'priority':
+      case 'dueDate':
+        if (errors['required']) {
+          this.errors[field] = 'This field is required';
+        }
+        break;
+      case 'description':
+        if (errors['minlength']) {
+          this.errors[field] = `Details too short, minimum of ${errors['minlength'].requiredLength} characters`;
+        }
+        break;
     }
-
-    const errors = this.myForm.controls[field].errors || {};
-
-    for (const key of Object.keys(errors)) {
-      switch (key){
-        case 'required':
-          this.errors = { title: key, msg: 'This field is required' };
-          return;
-        case 'minlength':
-          this.errors = { title: key, msg: `Details too short, minimum of ${errors['minlength'].requiredLength} characters` };
-          return;
-      }
-    }
-
-    this.errors = { title: '', msg: '' };
   }
 
 
   onSave():void{
     if (this.myForm.valid) {
-      const date = new Date();
       const newTask: Task = {
         ...this.myForm.value,
-        createdAt: date.toLocaleString()
+        createdAt: new Date()
       };
       this.taskService.addTask(newTask);
-      console.log(newTask)
+
+      this.taskSaved = true;
+      setTimeout(() => {
+        this.taskSaved = false;
+      }, 1000);
       this.myForm.reset();
     } else{
-      this.getFieldError('title');
-      this.getFieldError('description');
+      this.getFieldErrors();
     }
   }
 }
