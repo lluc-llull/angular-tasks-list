@@ -7,7 +7,7 @@
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.03);
 }
 
 .modal.show {
@@ -16,11 +16,11 @@
 
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto;
+  margin: 30% auto;
   padding: 20px;
   border: 1px solid #888;
+  border-radius: 4px;
   width: 80%;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   position: relative;
 }
 
@@ -109,37 +109,53 @@
   /*  display: none;*/
   /*}*/
 
-  .status::before {
-    content: url('/assets/svg/check_box_checked.svg');
-  }
-  .status.checked::before {
-    content: url('/assets/svg/check_box_unchecked.svg');
-  }
-
-  .see-task::before {
-    content: url('/assets/svg/info.svg');
-  }
-
-  .delete::before {
-    content: url('/assets/svg/delete.svg');
-  }
-
-  .actions-button::before {
-    content: url("/assets/svg/more_info.svg");
-  }
-
   .status,
+  .see-task,
+  .delete,
+  .actions-button {
+    padding: 8px 15px;
+    margin-right: 10px;
+    border: none;
+    color: white;
+    text-decoration: none;
+    display: inline-flex; /* Usar flexbox para alinear elementos */
+    align-items: center; /* Centrar verticalmente los elementos */
+    font-family: inherit;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .status {
+    background-color: green;
+    background-image: url('/assets/svg/check_box_checked.svg');
+    background-repeat: no-repeat;
+    background-position: left center; /* Ajustar la posición del SVG */
+    padding-left: 25px; /* Espacio para el SVG */
+  }
+
   .see-task {
-    padding: 5px;
-    margin-right: 5px;
+    background-color: orange;
+    background-image: url('/assets/svg/info.svg');
+    background-repeat: no-repeat;
+    background-position: left center; /* Ajustar la posición del SVG */
+    padding-left: 25px; /* Espacio para el SVG */
   }
 
   .delete {
-    padding: 5px;
+    background-color: crimson;
+    background-image: url('/assets/svg/delete.svg');
+    background-repeat: no-repeat;
+    background-position: left center; /* Ajustar la posición del SVG */
+    padding-left: 25px; /* Espacio para el SVG */
   }
 
   .actions-button {
-    padding: 5px;
+    background-color: royalblue;
+    background-image: url("/assets/svg/more_info.svg");
+    background-repeat: no-repeat;
+    background-position: left center; /* Ajustar la posición del SVG */
+    padding-left: 25px; /* Espacio para el SVG */
   }
+
 
 }
