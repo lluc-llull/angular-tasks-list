@@ -20,10 +20,10 @@ export class FormPageComponent implements OnInit{
   ]
 
   priorityOptions : Priority[] = [
-    {id: 1, name: 'Urgent', color: '#EC7063'},
-    {id: 2, name: 'High', color: '#F4D03F'},
-    {id: 3, name: 'Media', color: '#5DADE2'},
-    {id: 4, name: 'Low', color: '#AAB7B8'},
+    { id: 1, name: 'Urgent', color: '#EC7063', svg: 'assets/svg/flag_urgent.svg' },
+    { id: 2, name: 'High', color: '#F4D03F', svg: 'assets/svg/flag_high.svg' },
+    { id: 3, name: 'Medium', color: '#5DADE2', svg: 'assets/svg/flag_media.svg' },
+    { id: 4, name: 'Low', color: '#AAB7B8', svg: 'assets/svg/flag_low.svg' },
   ]
 
   public myForm : FormGroup = this.fb.group({

@@ -12,6 +12,7 @@ export interface Priority {
   id: number;
   name: string;
   color: string;
+  svg: string;
 }
 
 export interface Status {

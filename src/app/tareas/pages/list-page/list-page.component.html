@@ -4,29 +4,33 @@
   <table id="tasks">
     <thead>
       <tr class="head">
-
-        <th (click)="sortData('id')">ID
-          @if(getSortColumn === 'id'){
-            <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
-          }
-        </th>
-        <th (click)="sortData('title')">Title
-          @if (getSortColumn === 'title') {
-            <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
-          }
-        </th>
-        <th (click)="sortData('priority')">Priority
+        <th class="priority-title" (click)="sortData('priority')">
           @if(getSortColumn === 'priority') {
             <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
           }
         </th>
-        <th (click)="sortData('dueDate')">Due date
-          @if(getSortColumn === 'dueDate') {
+        <th class="id-title" (click)="sortData('id')">ID
+          @if(getSortColumn === 'id'){
             <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
           }
         </th>
-        <th (click)="sortData('status')">Status
+        <th class="title" (click)="sortData('title')">Title
+          @if (getSortColumn === 'title') {
+            <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
+          }
+        </th>
+        <th class="description-title" (click)="sortData('description')">Description
+          @if (getSortColumn === 'description') {
+            <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
+          }
+        </th>
+        <th class="status-title" (click)="sortData('status')">Status
           @if(getSortColumn === 'status') {
+            <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
+          }
+        </th>
+        <th class="duedate-title" (click)="sortData('dueDate')">Due date
+          @if(getSortColumn === 'dueDate') {
             <span>{{ getSortDirection === 'asc' ? '↑' : '↓' }}</span>
           }
         </th>
@@ -42,26 +46,29 @@
       @if(tasksList$ | async; as tasksList){
         @for (item of tasksList; track $index; let odd = $odd, even = $even) {
           <tr class="items" [ngClass]="{'odd-row': odd, 'even-row': even}">
-              <td>{{item.id}}</td>
-              <td>{{item.title}}</td>
-              <td>{{item.priority.name}}</td>
-              <td>{{item.dueDate | date:'shortDate'}}</td>
-              <td>{{item.status.name}}</td>
-              <td class="created-at">{{item.createdAt | date:'shortDate'}}</td>
-              <td>
+            <td class="priority-flag">
+              <img [src]="item.priority.svg" class="flag" style="width: 20px; height: auto;">
+            </td>
+            <td>{{item.id}}</td>
+            <td>{{item.title}}</td>
+            <td class="description">{{item.description}}</td>
+            <td>{{item.status.name}}</td>
+            <td class="due-date">{{item.dueDate | date:'shortDate'}}</td>
+            <td class="created-at">{{item.createdAt | date:'shortDate'}}</td>
+            <td>
 <!--                <button class="status" (click)="togglestatus(item)" [ngClass]="{ 'checked': item.status }">-->
 <!--                  <span class="text">{{!item.status | statusPipe}}</span>-->
 <!--                </button>-->
-                <button (click)="navigateToTask(item.id)" class="see-task">
-                  <span class="text">See Task</span>
-                </button>
-                <button class="delete" (click)="deleteValue(item)">
-                  <span class="text">Delete</span>
-                </button>
-                <button class="actions-button" (click)="openModal()">
-                  <span class="text">Modal</span>
-                </button>
-              </td>
+              <button (click)="navigateToTask(item.id)" class="see-task">
+                <span class="text">See Task</span>
+              </button>
+              <button class="delete" (click)="deleteValue(item)">
+                <span class="text">Delete</span>
+              </button>
+              <button class="actions-button" (click)="openModal()">
+                <span class="text">Modal</span>
+              </button>
+            </td>
           </tr>
 
           <modal-actions [isOpen]="modalOpen"

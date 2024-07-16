@@ -34,6 +34,10 @@ th.actions::after {
   content: "Actions";
 }
 
+th.actions::after {
+  content: "Priority";
+}
+
 .odd-row {
   background-color: #f6f6f6;
 }
@@ -103,6 +107,41 @@ th.actions::after {
 
 .actions-button .text{
   display: none;
+}
+
+.priority-flag {
+  justify-content: center;
+  align-items: center;
+}
+
+.flag {
+  width: 20px; /* adjust as needed */
+  height: 20px; /* adjust as needed */
+}
+
+
+.priority-title {
+  width: 30px;
+}
+
+.duedate-title {
+  width: 70px;
+}
+
+.created-at {
+  width: 80px;
+}
+
+.id-title{
+  width: 10px;
+}
+
+.status-title{
+  width: 90px;
+}
+
+.actions {
+  width: 180px;
 }
 
 @media screen and (max-width: 768px) {
@@ -177,12 +216,29 @@ th.actions::after {
     content: "Act.";
   }
 
-  .created-at{
+  th.priority-title::after {
+    content: "Prio.";
+  }
+
+
+
+  .created-at, .description, .description-title, .duedate-title, .due-date{
     display: none;
+  }
+
+  .title{
+    padding: 0px 30px 0px 30px !important;
+  }
+
+  .status-title{
+    padding: 0px 25px 0px 25px !important;
+  }
+
+  .id-title{
+    padding: 0px 20px 0px 20px !important;
   }
 
   #tasks th{
     text-align: center;
-    padding: 4px;
   }
 }
