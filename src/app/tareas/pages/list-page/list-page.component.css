@@ -34,7 +34,7 @@ th.actions::after {
   content: "Actions";
 }
 
-th.actions::after {
+th.priority-title::after {
   content: "Priority";
 }
 
