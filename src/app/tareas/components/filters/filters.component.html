@@ -1,0 +1,16 @@
+<div class="selector-container">
+  <select class="select-priorities" [(ngModel)]="selectedPriority" (change)="applyPriorityFilter()">
+    <option value="" selected class="selected-option">Filter by priority</option>
+    @for (item of priorityOptions; track $index) {
+      <option [value]="item.name">{{ item.name }}</option>
+    }
+  </select>
+
+  <select class="select-status" [(ngModel)]="selectedStatus" (change)="applyStatusFilter()">
+    <option value="" selected class="selected-option">Filter by status</option>
+    @for (item of statusOptions; track $index) {
+      <option [value]="item.name">{{ item.name }}</option>
+    }
+  </select>
+
+</div>

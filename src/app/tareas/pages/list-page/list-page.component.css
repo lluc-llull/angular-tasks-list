@@ -2,6 +2,15 @@ h2{
   font-size: 27px;
 }
 
+.title-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+filters{
+  padding: 0 50px 0 0;
+}
+
 .list{
   background-color: #f2f1f2;
   width: 97%;

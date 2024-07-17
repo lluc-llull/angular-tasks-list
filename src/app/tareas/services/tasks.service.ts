@@ -53,6 +53,12 @@ export class TasksService {
     });
   }
 
+  getTasksByStatus(statusName: string): Observable<Task[]> {
+    return this.tasksSubject.asObservable().pipe(
+      map(tasks => tasks.filter(task => task.status.name === statusName))
+    );
+  }
+
   getTasksByPriority(priorityName: string): Observable<Task[]> {
     return this.tasksSubject.asObservable().pipe(
       map(tasks => tasks.filter(task => task.priority.name === priorityName))

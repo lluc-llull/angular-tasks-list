@@ -7,11 +7,13 @@ import { Observable, Subscription, map, of, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import {ModalActionsComponent} from "../../components/modal-actions/modal-actions.component";
 import { DomSanitizer } from '@angular/platform-browser';
+import {ReactiveFormsModule} from "@angular/forms";
+import {FiltersComponent} from "../../components/filters/filters.component";
 
 @Component({
   selector: 'app-list-page',
   standalone: true,
-  imports: [CommonModule, RouterModule, StatusPipe, ModalActionsComponent],
+  imports: [CommonModule, RouterModule, StatusPipe, ModalActionsComponent, ReactiveFormsModule, FiltersComponent],
   templateUrl: './list-page.component.html',
   styleUrl: './list-page.component.css'
 })
@@ -57,6 +59,9 @@ export class ListPageComponent implements OnInit, OnDestroy {
     this.modalOpen = false;
   }
 
+  selectedPriority: string = '';
+  selectedStatus: string = '';
+
   tasksList$!: Observable<Task[]>;
   private tasksSubscription: Subscription = new Subscription();
 
@@ -81,12 +86,7 @@ export class ListPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.tasksList$ = this.taskService.getTasksObservable().pipe(
-      tap(tasks => {
-        this.tasksList$ = of(tasks);
-      })
-    );
-    // this.refreshTasksList();
+    this.loadAllTasks();
   }
 
   ngOnDestroy(): void {
@@ -155,23 +155,32 @@ export class ListPageComponent implements OnInit, OnDestroy {
     this.router.navigate(['/tasks/task', taskId]);
   }
 
-  getFlagSrc(statusName: string): string {
-    switch (statusName) {
-      case 'Urgent':
-        return '/src/assets/svg/flag_urgent.svg';
-      case 'High':
-        return '/src/assets/svg/flag_high.svg';
-      case 'Media':
-        return '/src/assets/svg/flag_media.svg';
-      case 'Low':
-        return '/src/assets/svg/flag_low.svg';
-      default:
-        return ''; // Or a default image path
+  loadAllTasks(): void {
+    this.tasksList$ = this.taskService.getTasksObservable().pipe(
+      tap(tasks => {
+        this.tasksList$ = of(tasks);
+      })
+    );
+    this.tasksSubscription = this.tasksList$.subscribe();
+  }
+
+  onPriorityFilterChanged(selectedPriority: string): void {
+    this.selectedPriority = selectedPriority;
+    if (this.selectedPriority) {
+      console.log('Applying priority filter:', this.selectedPriority);
+      this.tasksList$ = this.taskService.getTasksByPriority(this.selectedPriority);
+    } else {
+      this.loadAllTasks();
     }
   }
 
-
-
-
-
+  onStatusFilterChanged(selectedStatus: string): void {
+    this.selectedStatus = selectedStatus;
+    if (this.selectedStatus) {
+      console.log('Applying status filter:', this.selectedStatus);
+      this.tasksList$ = this.taskService.getTasksByStatus(this.selectedStatus);
+    } else {
+      this.loadAllTasks();
+    }
+  }
 }

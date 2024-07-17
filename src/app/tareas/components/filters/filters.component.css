@@ -1,0 +1,57 @@
+.selector-container {
+  display: flex;
+}
+
+.select-priorities {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 15px 15px 0 0;
+  box-sizing: border-box;
+  border: 1px solid #b6b6b6;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #4d4d4d;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.select-status{
+  width: 100%;
+  padding: 12px 25px;
+  margin: 15px 15px 0 0;
+  box-sizing: border-box;
+  border: 1px solid #b6b6b6;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #4d4d4d;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.selected-option {
+  font-weight: bold;
+  color: #4d4d4d;
+}
+
+.custom-datepicker{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 15px 0px 0px 0px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@media screen and (max-width: 768px) {
+
+  .selector-container {
+    display: block;
+  }
+}
+
+

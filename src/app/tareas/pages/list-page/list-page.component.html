@@ -1,4 +1,8 @@
-<h2>Tasks List</h2>
+<div class="title-container">
+  <h2>Tasks List</h2>
+
+  <filters (filterByPriority)="onPriorityFilterChanged($event)" (filterByStatus)="onStatusFilterChanged($event)"/>
+</div>
 
 <div class="list">
   <table id="tasks">
